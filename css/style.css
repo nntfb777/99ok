@@ -53,7 +53,8 @@ ul li {
 /*---------------index--------------*/
 .sjbdmap,
 .pcbdmap,
-#container {
+#container,
+#containerlow {
 	display: none;
 }
 
@@ -66,11 +67,13 @@ ul li {
 		display: block !important;
 	}
 
-	#container2 {
-		display: none !important;
+	#containerlow {
+		/* Hiển thị trên PC */
+		display: block !important;
 	}
 
-	#containerlow {
+	#container2 {
+		/* Ẩn trên PC */
 		display: none !important;
 	}
 }
@@ -139,7 +142,7 @@ ul li {
 
 #header .logo img {
 	display: block;
-	width: 210px;
+	width: 330px;
 	padding:15px;
 }
 
@@ -652,3 +655,81 @@ ul li {
 		font-size: 16px;
 	}
 }
+
+
+#containerlow {
+    padding: 0 0 0 0; /* Padding trên/dưới giống #main */
+}
+
+#mainlow {
+    width: 1000px !important; 
+    max-width: 100%; 
+	margin: 0 auto 10px; /* Căn giữa */
+	position: relative;
+	border: 2px solid #004aad !important; 
+	background-color: #25aae2; 
+	padding: 0;
+	box-sizing: border-box; 
+	overflow: hidden; /* Quan trọng để tránh tràn */
+}
+
+#banner-pc-list {
+    /* Điều chỉnh padding để các banner không bị dính vào border của #mainlow */
+    padding: 10px 10px 20px 10px; 
+    background-color: #25aae2; /* Có thể đặt nền trắng cho riêng khu vực banner */
+}
+
+#banner-pc-list h2 {
+    /* Ép h2 có chiều rộng bằng nội dung và căn giữa */
+    width: fit-content; 
+	margin: 0 auto 15px; 
+    display: block;
+    
+    /* Căn ảnh tiêu đề */
+    text-align: center;
+    padding-top: -200px;
+}
+#banner-pc-list h2 img {
+    display: block;
+}
+
+.double-banner-group { 
+	display: flex !important;
+	gap: 10px; /* Khoảng cách giữa 2 banner */
+	justify-content: space-between; /* Đẩy 2 banner ra hai phía */
+	align-items: flex-start;
+    /* Xóa padding: 0 100px; để nó chiếm toàn bộ chiều rộng có sẵn */
+    padding: 0; 
+}
+
+.banner-item {
+    /* Tính toán chia đều chiều rộng cho 2 cột */
+	flex-basis: calc(60% - 7.5px); 
+    
+    /* Đảm bảo không có margin dọc không cần thiết */
+    margin-bottom: 0; 
+    
+	overflow: hidden;
+	border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+#tripleBannerCarousel .carousel-control-prev,
+#tripleBannerCarousel .carousel-control-next {
+    width: 30px; 
+    height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    opacity: 0.7; 
+}
+
+
