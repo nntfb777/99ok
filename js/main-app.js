@@ -31,7 +31,7 @@
             connectTimeout: "hết hạn",
             connectFail: '9ms',
             name: 'okking.com/',
-            kefuUrl: "https://ep84du.vwhxbsal.com/chatwindow.aspx?siteId=65002300&planId=288340e4-854d-4c49-b719-3d67dd29e2d9&chatgroup=2",
+            kefuUrl: "https://w9c0kvv.k0vc1svq.com/chatwindow.aspx?siteId=65002300&planId=288340e4-854d-4c49-b719-3d67dd29e2d9&chatgroup=2",
             apkAppUrl: 'https://990k-0.club/DownloadApp/',
             pcUrl: 'https://990k-0.club/DownloadApp/',
         },
