@@ -20,7 +20,6 @@
                 "https://990k-2.club/",
                 "https://990k-9.club/",
                 "https://990k-6.club/",
-                "https://990k-3.club/",
                 "https://990k-8.club/",
             ],
 
