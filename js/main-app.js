@@ -15,12 +15,11 @@ var app = new Vue({
     pcUrl: "",
     socialLinks: {
       telegramUrl: "https://telegram.me/vuanhacai_99ok",
-      dailyTelegramUrl: "https://telegram.me/DAILY99OK",
-      facebookUrl: "https://www.facebook.com/trangchinhthuc99ok/",
-      agentLoginUrl: "http://fc.123win.gay/",
+      dailyTelegramUrl: "https://telegram.me/CSKH24H99OK",
+      facebookUrl: "https://www.facebook.com/99okThegioigiaitriso1/",
+      agentLoginUrl: "http://fc.99ok.auction/",
       giftcodeUrl: "https://99okcode.pages.dev/"
     },
-    // Banner mặc định phòng trường hợp API chưa trả về dữ liệu
     banners: [
       "/images/banner/1.jpg",
       "/images/banner/2.jpg",
@@ -56,28 +55,24 @@ var app = new Vue({
         if (result.success && result.data) {
           const data = result.data;
 
-          const kefu = data.find(i => i.key_name === 'kefuUrl');
-          const apk = data.find(i => i.key_name === 'apkAppUrl');
-          const pc = data.find(i => i.key_name === 'pcUrl');
+          if (data.systemLinks) {
+            if (data.systemLinks.kefuUrl) this.kefuUrl = data.systemLinks.kefuUrl;
+            if (data.systemLinks.apkAppUrl) this.apkAppUrl = data.systemLinks.apkAppUrl;
+            if (data.systemLinks.pcUrl) this.pcUrl = data.systemLinks.pcUrl;
+          }
 
-          if (kefu) this.kefuUrl = kefu.value;
-          if (apk) this.apkAppUrl = apk.value;
-          if (pc) this.pcUrl = pc.value;
-
-          const pings = data.filter(i => i.category === 'ping_link').map(i => i.value);
-          if (pings.length > 0) {
-            this.masterUrls = pings;
+          if (data.masterUrls && data.masterUrls.length > 0) {
+            this.masterUrls = data.masterUrls;
             this.urls = this.getRandomUrls(5);
             this.moburls = this.getRandomUrls(5);
           }
 
-          data.filter(i => i.category === 'social_link').forEach(item => {
-            if (item.value) this.socialLinks[item.key_name] = item.value;
-          });
+          if (data.socialLinks) {
+            Object.assign(this.socialLinks, data.socialLinks);
+          }
 
-          const bannerList = data.filter(i => i.category === 'banner_image').map(i => i.value);
-          if (bannerList.length > 0) {
-            this.banners = bannerList;
+          if (data.banners && data.banners.length > 0) {
+            this.banners = data.banners;
           }
         }
       } catch (err) {
@@ -101,7 +96,6 @@ var app = new Vue({
     startPingCheck() {
       if (this.timeHanlde) clearInterval(this.timeHanlde);
 
-      // Cập nhật nhảy số ms ngẫu nhiên từ 3ms đến 9ms liên tục mỗi 1.5 giây
       this.timeHanlde = setInterval(() => {
         if (this.urls && this.urls.length > 0) {
           this.urls.forEach(item => {
@@ -139,9 +133,9 @@ var app = new Vue({
         window.location.href = this.pcUrl || "https://99ok.com";
       } else {
         if (this.browserDetection() == 'iphone' || this.browserDetection() == 'ipad') {
-          window.location.href = this.apkAppUrl || "https://990k-0.club/DownloadApp/";
+          window.location.href = this.apkAppUrl || "https://99ok.com/DownloadApp/";
         } else {
-          window.location.href = this.apkAppUrl || "https://990k-0.club/DownloadApp/";
+          window.location.href = this.apkAppUrl || "https://99ok.com/DownloadApp/";
         }
       }
     },
